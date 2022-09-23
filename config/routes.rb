@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :posts
   resources :accounts
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
+  
+  scope module: "accounts" do
+    root to: "posts#index"
+  end
   root "accounts#index"
 end
