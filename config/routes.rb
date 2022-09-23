@@ -1,9 +1,15 @@
+require "contraints/subdomain_required"
+
 Rails.application.routes.draw do
-  resources :posts
-  resources :accounts
   
+  constraints(SubdomainRequired) do
   scope module: "accounts" do
     root to: "posts#index"
+    resources :posts
   end
-  root "accounts#index"
+end
+
+  resources :posts
+  resources :accounts
+  root to: "accounts#index"
 end

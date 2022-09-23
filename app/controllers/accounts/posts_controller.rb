@@ -13,7 +13,7 @@ module Accounts
       
         # GET /posts/new
         def new
-          @post = Post.new
+          @post = current_account.posts.new
         end
       
         # GET /posts/1/edit
@@ -22,7 +22,7 @@ module Accounts
       
         # POST /posts or /posts.json
         def create
-          @post = Post.new(post_params)
+          @post = current_account.posts.new(post_params)
       
           respond_to do |format|
             if @post.save
